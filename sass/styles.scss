@@ -12,6 +12,16 @@
 /* ==========================================================================
 Global Styles
 ========================================================================== */
+// Custom CSS
+.small-checkbox {
+  /* Shrinks the checkbox to 70% of its original size */
+  transform: scale(0.3);
+  
+  /* Centers the alignment with adjacent text */
+  vertical-align: middle; 
+}
+// End Custom CSS
+
 .group:after {
   content: "";
   display: table;
@@ -292,7 +302,7 @@ Hero
   z-index: 999;
 }
 .tpbg {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .fixed {
   position: fixed;

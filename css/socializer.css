@@ -1,4 +1,4 @@
-.fa {
+.social-media-button {
   padding: 20px;
   font-size: 30px;
   width: 62px;
@@ -11,7 +11,7 @@
   position: relative; /* The arrow itself */
   /* top: 50%;
   left: 50%; */
-  transform: translate(-15%, -25%); 
+  transform: translate(-17%, -27%); 
 }
 
 .fa:hover {
