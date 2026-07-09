@@ -213,8 +213,17 @@ $(document).ready(function () {
         var data = $(this).serialize();
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
+        
+        // var md5_invite_codes = [ '9b59f0aaff75dfcc716b42ce6416541c' ];
+        // import {invite_codes} from './guest_codes.js';
+        var md5_invite_codes = invite_codes.map(function(invite_code_list) {
+            return invite_code_list.code;
+        });
 
-        if (MD5($('#invite_code').val()) !== '9b59f0aaff75dfcc716b42ce6416541c') {
+        var user_invite_code = MD5($('#invite_code').val());
+
+        // if (MD5($('#invite_code').val()) !== '9b59f0aaff75dfcc716b42ce6416541c') {
+        if (!md5_invite_codes.includes(user_invite_code)) {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
         } else {
             $.post('https://script.google.com/macros/s/AKfycbzh5ZwLdr-aCCzJOPHeAFi9lVSKyUJ5bq5kiHqsGJW9ASd9LljQ2qupp84DkMYLNjNI/exec', data)
@@ -254,7 +263,7 @@ function initMap() {
     // });
     var map = document.getElementById('map-canvas');
     // map.innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.883467583682!2d-91.14929828795518!3d30.411047974635856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8626a6bce511f5c3%3A0x4fafca4830b0fec!2sChrist%20Covenant%20Church!5e0!3m2!1sen!2sus!4v1783143734125!5m2!1sen!2sus" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>';
-    map.innerHTML = '<iframe src="https://www.google.com/maps/d/u/3/embed?mid=13xOvYRulv0ltv0lOfa1iwpGEulZT0yw&ehbc=2E312F&noprof=1" width="100%" height="600" style="border: none;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe><br>'
+    map.innerHTML = '<iframe src="https://www.google.com/maps/d/embed?mid=13xOvYRulv0ltv0lOfa1iwpGEulZT0yw&ehbc=2E312F&noprof=1" width="100%" height="600" style="border: none;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe><br>'
 }
 
 function initBBSRMap() {
