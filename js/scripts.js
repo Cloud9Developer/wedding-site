@@ -253,7 +253,8 @@ function initMap() {
     //     map: map
     // });
     var map = document.getElementById('map-canvas');
-    map.innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.883467583682!2d-91.14929828795518!3d30.411047974635856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8626a6bce511f5c3%3A0x4fafca4830b0fec!2sChrist%20Covenant%20Church!5e0!3m2!1sen!2sus!4v1783143734125!5m2!1sen!2sus" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+    // map.innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.883467583682!2d-91.14929828795518!3d30.411047974635856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8626a6bce511f5c3%3A0x4fafca4830b0fec!2sChrist%20Covenant%20Church!5e0!3m2!1sen!2sus!4v1783143734125!5m2!1sen!2sus" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+    map.innerHTML = '<iframe src="https://www.google.com/maps/d/u/3/embed?mid=13xOvYRulv0ltv0lOfa1iwpGEulZT0yw&ehbc=2E312F&noprof=1" width="100%" height="600" style="border: none;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>'
 }
 
 function initBBSRMap() {
