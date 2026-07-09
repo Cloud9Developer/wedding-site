@@ -7,11 +7,9 @@
   margin: 5px 2px;
 }
 
-.to-top-arrow {
-  position: relative; /* The arrow itself */
-  /* top: 50%;
-  left: 50%; */
-  transform: translate(-17%, -27%); 
+.map-info-header {
+  display: flex; 
+  justify-content: center;
 }
 
 .fa:hover {
