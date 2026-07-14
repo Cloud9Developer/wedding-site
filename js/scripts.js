@@ -164,32 +164,6 @@ $(document).ready(function () {
     });
 
     /********************** Social Share buttons ***********************/
-    // var share_bar = document.getElementsByClassName('share-bar');
-    // var po = document.createElement('script');
-    // po.type = 'text/javascript';
-    // po.async = true;
-    // po.src = 'https://apis.google.com/js/platform.js';
-    // var s = document.getElementsByTagName('script')[0];
-    // s.parentNode.insertBefore(po, s);
-
-    // for (var i = 0; i < share_bar.length; i++) {
-    //     // var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-    //     //     'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=ramswarooppatra&amp;hashtags=ramandantara&amp;count=horizontal"' +
-    //     //     'style="width:105px; height:21px;">' +
-    //     //     '</iframe>' +
-
-    //     //     '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>' +
-
-    //     //     '<div class="g-plusone" data-size="medium"></div>';
-    //     // var html = '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>';
-
-    //     var html = '<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site" class="fa fa-facebook social-media-button" target="_blank" rel="noopener noreferrer" style="font-size:2em;"></a>' +
-    //             '<a href="https://instagram.com" class="fa fa-instagram social-media-button" target="_blank" style="font-size:2em;"></a>';
-    //     // '<iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;url=' + encodeURIComponent(window.location) + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="width:105px; height:21px;"></iframe>';
-
-    //     share_bar[i].innerHTML = html;
-    //     share_bar[i].style.display = 'inline-block';
-    // }
 
     // Use a standard anonymous function for the event listener
     document.getElementById('share-button-ig').addEventListener('click', async function() {
@@ -266,7 +240,7 @@ $(document).ready(function () {
             end: new Date('Nov 27, 2027 22:00'),
 
             // Event Address
-            address: '1700 Lee Dr Baton Rouge, LA 70808',
+            address: '1700 Lee Dr, Baton Rouge, LA 70808, USA',
 
             // Event Description
             description: "We can't wait to see you on our big day!"
@@ -335,19 +309,19 @@ function initMap() {
     map.innerHTML = '<iframe src="https://www.google.com/maps/d/embed?mid=13xOvYRulv0ltv0lOfa1iwpGEulZT0yw&ehbc=2E312F&noprof=1" width="100%" height="600" style="border: none;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe><br>'
 }
 
-function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: la_fiesta,
-        scrollwheel: false
-    });
+// function initBBSRMap() {
+//     var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
+//     var map = new google.maps.Map(document.getElementById('map-canvas'), {
+//         zoom: 15,
+//         center: la_fiesta,
+//         scrollwheel: false
+//     });
 
-    var marker = new google.maps.Marker({
-        position: la_fiesta,
-        map: map
-    });
-}
+//     var marker = new google.maps.Marker({
+//         position: la_fiesta,
+//         map: map
+//     });
+// }
 
 // alert_markup
 function alert_markup(alert_type, msg) {
