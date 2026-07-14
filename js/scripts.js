@@ -266,7 +266,7 @@ $(document).ready(function () {
             end: new Date('Nov 27, 2027 22:00'),
 
             // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
+            address: '1700 Lee Dr Baton Rouge, LA 70808',
 
             // Event Description
             description: "We can't wait to see you on our big day!"
