@@ -7,7 +7,7 @@ RUN echo "run2"
 
 COPY . .
 
-RUN npm install && npm install -g gulp-cli
+RUN npm install && npm install -g gulp-cli gulp-terser
 
 RUN gulp
 

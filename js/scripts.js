@@ -86,32 +86,59 @@ $(document).ready(function () {
     /***************** Header BG Scroll ******************/
 
     $(function () {
+        // $(window).scroll(function () {
+        //     var scroll = $(window).scrollTop();
+
+        //     if (scroll >= 20) {
+        //         $('section.navigation').addClass('fixed');
+        //         $('header').css({
+        //             "border-bottom": "none",
+        //             "padding": "35px 0"
+        //         });
+        //         $('header .member-actions').css({
+        //             "top": "26px",
+        //         });
+        //         $('header .navicon').css({
+        //             "top": "34px",
+        //         });
+        //     } else {
+        //         $('section.navigation').removeClass('fixed');
+        //         $('header').css({
+        //             "border-bottom": "solid 1px rgba(255, 255, 255, 0.2)",
+        //             "padding": "50px 0"
+        //         });
+        //         $('header .member-actions').css({
+        //             "top": "41px",
+        //         });
+        //         $('header .navicon').css({
+        //             "top": "48px",
+        //         });
+        //     }
+        // });
         $(window).scroll(function () {
             var scroll = $(window).scrollTop();
 
             if (scroll >= 20) {
                 $('section.navigation').addClass('fixed');
                 $('header').css({
-                    "border-bottom": "none",
-                    "padding": "35px 0"
+                    "padding": "5px 0"
                 });
                 $('header .member-actions').css({
-                    "top": "26px",
+                    "top": "5px",
                 });
                 $('header .navicon').css({
-                    "top": "34px",
+                    "top": "5px",
                 });
             } else {
                 $('section.navigation').removeClass('fixed');
                 $('header').css({
-                    "border-bottom": "solid 1px rgba(255, 255, 255, 0.2)",
-                    "padding": "50px 0"
+                    "padding": "5px 0"
                 });
                 $('header .member-actions').css({
-                    "top": "41px",
+                    "top": "5px",
                 });
                 $('header .navicon').css({
-                    "top": "48px",
+                    "top": "5px",
                 });
             }
         });
@@ -137,28 +164,69 @@ $(document).ready(function () {
     });
 
     /********************** Social Share buttons ***********************/
-    var share_bar = document.getElementsByClassName('share-bar');
-    var po = document.createElement('script');
-    po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
+    // var share_bar = document.getElementsByClassName('share-bar');
+    // var po = document.createElement('script');
+    // po.type = 'text/javascript';
+    // po.async = true;
+    // po.src = 'https://apis.google.com/js/platform.js';
+    // var s = document.getElementsByTagName('script')[0];
+    // s.parentNode.insertBefore(po, s);
 
-    for (var i = 0; i < share_bar.length; i++) {
-        var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=ramswarooppatra&amp;hashtags=ramandantara&amp;count=horizontal"' +
-            'style="width:105px; height:21px;">' +
-            '</iframe>' +
+    // for (var i = 0; i < share_bar.length; i++) {
+    //     // var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
+    //     //     'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=ramswarooppatra&amp;hashtags=ramandantara&amp;count=horizontal"' +
+    //     //     'style="width:105px; height:21px;">' +
+    //     //     '</iframe>' +
 
-            '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>' +
+    //     //     '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>' +
 
-            '<div class="g-plusone" data-size="medium"></div>';
+    //     //     '<div class="g-plusone" data-size="medium"></div>';
+    //     // var html = '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>';
 
-        // '<iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;url=' + encodeURIComponent(window.location) + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="width:105px; height:21px;"></iframe>';
+    //     var html = '<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site" class="fa fa-facebook social-media-button" target="_blank" rel="noopener noreferrer" style="font-size:2em;"></a>' +
+    //             '<a href="https://instagram.com" class="fa fa-instagram social-media-button" target="_blank" style="font-size:2em;"></a>';
+    //     // '<iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;url=' + encodeURIComponent(window.location) + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="width:105px; height:21px;"></iframe>';
 
-        share_bar[i].innerHTML = html;
-        share_bar[i].style.display = 'inline-block';
+    //     share_bar[i].innerHTML = html;
+    //     share_bar[i].style.display = 'inline-block';
+    // }
+
+    // Use a standard anonymous function for the event listener
+    document.getElementById('share-button-ig').addEventListener('click', async function() {
+        if(!await shareButtonClick()) {
+            // "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site"
+            window.open("https://instagram.com", "_blank");
+
+        }
+    });
+
+    document.getElementById('share-button-fb').addEventListener('click', async function() {
+        if(!await shareButtonClick()) {
+            // "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site"
+            window.open("https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site", "_blank");
+
+        }
+    });
+
+    async function shareButtonClick() {
+        var shareData = {
+            title: '#SheChoseHebert',
+            text: '#SheChoseHebert',
+            url: 'https://example.com'
+        };
+
+        try {
+            if (navigator.canShare && navigator.canShare(shareData)) {
+                await navigator.share(shareData);
+                console.log('Shared successfully');
+            } else {
+                // alert('Sharing is not supported on this device/browser. LOL');
+                return false;
+            }
+        } catch (err) {
+            console.error('Error sharing:', err);
+        }
+        return true;
     }
 
     /********************** Embed youtube video *********************/

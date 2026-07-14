@@ -114,6 +114,9 @@ section .header {
   background-color: #000;
   border-radius: 4px;
 }
+.tpbg {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 /* ==========================================================================
 Animations
 ========================================================================== */
@@ -288,11 +291,26 @@ Hero
     margin-bottom: 80px;
   }
   .hero-content {
-    padding-top: 40%;
+    padding-top: 20%;
   }
   .hero-content img {
-    width: 55%;
+    // width: 55%;
     margin-bottom: 12%;
+  }
+  .cm-logo {
+    max-height: 400px;
+    /* aspect-ratio: 1 / 1; */
+    /* object-fit: contain; */
+    /* 2. Turn the square into a circle */
+    border-radius: 30%;
+    
+    /* 3. Transparent background color (Red, Green, Blue, Alpha/Opacity) */
+    background-color: rgba(0, 0, 0, 0.2); /* 50% transparent blue */
+    padding: 10px;
+
+    // transform: translate(0%, 20%);
+    // -webkit-transform: translate(0%, 20%); /* For older browser support */
+    // -ms-transform: translate(0%, 20%);
   }
 }
 .navigation {
@@ -301,8 +319,8 @@ Hero
   width: 100%;
   z-index: 999;
 }
-.tpbg {
-  background-color: rgba(0, 0, 0, 0.3);
+.nav-padding {
+  padding: 5px 0;
 }
 .fixed {
   position: fixed;
@@ -331,7 +349,7 @@ header {
     display: inline-block;
   }
   .logo img {
-    height: 19px;
+    height: 40px;
   }
   ul.primary-nav {
     margin: 0 0 0 75px;
