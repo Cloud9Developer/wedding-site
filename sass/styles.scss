@@ -119,37 +119,37 @@ section .header {
 }
 .fa-select {
   /* Forces the select box to use Font Awesome Solid */
-  font-family: 'Font Awesome 6 Free', 'sans-serif';
-  font-weight: 900; 
+  // font-family: 'Font Awesome 6 Free', 'sans-serif';
+  // font-weight: 900; 
   
   /* Retaining transparency from previous step */
   background-color: transparent;
-  appearance: none;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  // appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.386);
   padding: 8px 32px 8px 12px;
-  color: inherit;
+  color: #9d9c9c;
 
    /* Generates a clean custom arrow using a white SVG chevron */
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.8)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
+  // background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.8)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  // background-repeat: no-repeat;
   
   /* Positions the arrow 12px from the right edge and centers it vertically */
-  background-position: right 12px center;
+  // background-position: right 12px center;
   
   /* Resizes the SVG arrow size */
-  background-size: 16px;
+  // background-size: 16px;
   
   /* IMPORTANT: Extra right padding keeps long text from overlapping the arrow */
   padding: 8px 40px 8px 12px; 
   
   width: 100%;
-  max-width: 300px;
+  max-width: 95%;
 }
 
 /* Ensures the dropdown list items also render the icons correctly */
 .fa-select option {
-  font-family: 'Font Awesome 6 Free', 'sans-serif';
-  font-weight: 900;
+  // font-family: 'Font Awesome 6 Free', 'sans-serif';
+  // font-weight: 900;
   background-color: #ffffff;
   color: #333333;
 }
@@ -888,7 +888,7 @@ RSVP form
         left: 30px;
         transform: translateY(-50%);
       }
-      i.fa-user, i.fa-users, i.fa-envelope, .fa-key, .fa-user-plus, .fa-address-book {
+      i.fa-user, i.fa-users, i.fa-envelope, i.fa-key, i.fa-user-plus, i.fa-address-book {
         font-size: 14px;
         position: absolute;
         top: 50%;
