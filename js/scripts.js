@@ -212,7 +212,7 @@ $(document).ready(function () {
         var shareData = {
             title: '#SheChoseHebert',
             text: '#SheChoseHebert',
-            url: 'https://example.com'
+            url: 'https://cloud9developer.github.io/wedding-site/'
         };
 
         try {
