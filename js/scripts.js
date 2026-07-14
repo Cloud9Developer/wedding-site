@@ -169,7 +169,7 @@ $(document).ready(function () {
     document.getElementById('share-button-ig').addEventListener('click', async function() {
         if(!await shareButtonClick()) {
             // "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site"
-            window.open("https://instagram.com", "_blank");
+            window.open("https://instagram.com/explore/tags/SheChoseHebert/", "_blank");
 
         }
     });
