@@ -203,7 +203,8 @@ $(document).ready(function () {
     document.getElementById('share-button-fb').addEventListener('click', async function() {
         if(!await shareButtonClick()) {
             // "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site"
-            window.open("https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site", "_blank");
+            // window.open("https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcloud9developer.github.io%2Fwedding-site", "_blank");
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href), "_blank");
 
         }
     });
@@ -212,7 +213,7 @@ $(document).ready(function () {
         var shareData = {
             title: '#SheChoseHebert',
             text: '#SheChoseHebert',
-            url: 'https://cloud9developer.github.io/wedding-site/'
+            url: encodeURIComponent(window.location.href)
         };
 
         try {
