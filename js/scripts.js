@@ -62,7 +62,10 @@ $(document).ready(function () {
     $('.fancybox').fancybox({
         padding: 4,
         width: 1000,
-        height: 800
+        height: 800,
+        arrows    : true,  // Displays navigation arrows at the screen edges
+        loop      : true,  // Allows endless cycling through the gallery items
+        nextClick : false  // Optional: stops a main image click from skipping forward
     });
 
     /***************** Tooltips ******************/
