@@ -976,50 +976,44 @@ body.modal-open {
 Slideshow
 ========================================================================== */
 /* 1. Viewport container (keeps images framed nicely) */
-.slider-container {
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
-  height: 400px;
-  overflow: hidden; /* Hides the images waiting in line */
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+/* Slideshow Container */
+.slideshow {
+    width: 80%;
+    max-width: 800px;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* 2. The horizontal strip holding all slides */
-.slider-wrapper {
-  display: flex;
-  width: 300%; /* 3 images = 300% width */
-  height: 100%;
-  animation: slideAnimation 12s infinite ease-in-out;
+/* Wrapper moving the images */
+.slide-wrapper {
+    display: flex;
+    width: 300%; /* 100% multiplied by number of slides */
+    height: 100%;
+    animation: slideAnimation 12s infinite;
 }
 
-/* 3. Force each image to fill exactly 1 container width */
-.slider-wrapper img {
-  width: 33.333%; /* 100% divided by 3 images */
-  height: 100%;
-  object-fit: cover; /* Prevents image distortion */
+/* Individual Slides */
+.slide {
+    width: 100%;
+    height: 100%;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* 4. Animation Keyframes */
-/* 
-   Total duration: 12 seconds (4 seconds per image)
-   0% - 25%   : Show Image 1
-   33% - 58%  : Show Image 2 (shifted left by -100%)
-   66% - 91%  : Show Image 3 (shifted left by -200%)
-*/
+/* Animation Logic (3 Slides) */
 @keyframes slideAnimation {
-  0%, 25% {
-    transform: translateX(0);
-  }
-  33%, 58% {
-    transform: translateX(-33.333%);
-  }
-  66%, 91% {
-    transform: translateX(-66.666%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+    0% { transform: translateX(0%); }
+    28% { transform: translateX(0%); }
+    33% { transform: translateX(-33.33%); }
+    61% { transform: translateX(-33.33%); }
+    66% { transform: translateX(-66.66%); }
+    95% { transform: translateX(-66.66%); }
+    100% { transform: translateX(0%); }
 }
