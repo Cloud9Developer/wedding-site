@@ -971,3 +971,55 @@ body.modal-open {
 .modal-body {
   padding:25px;
 }
+
+/* ==========================================================================
+Slideshow
+========================================================================== */
+/* 1. Viewport container (keeps images framed nicely) */
+.slider-container {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  height: 400px;
+  overflow: hidden; /* Hides the images waiting in line */
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. The horizontal strip holding all slides */
+.slider-wrapper {
+  display: flex;
+  width: 300%; /* 3 images = 300% width */
+  height: 100%;
+  animation: slideAnimation 12s infinite ease-in-out;
+}
+
+/* 3. Force each image to fill exactly 1 container width */
+.slider-wrapper img {
+  width: 33.333%; /* 100% divided by 3 images */
+  height: 100%;
+  object-fit: cover; /* Prevents image distortion */
+}
+
+/* 4. Animation Keyframes */
+/* 
+   Total duration: 12 seconds (4 seconds per image)
+   0% - 25%   : Show Image 1
+   33% - 58%  : Show Image 2 (shifted left by -100%)
+   66% - 91%  : Show Image 3 (shifted left by -200%)
+*/
+@keyframes slideAnimation {
+  0%, 25% {
+    transform: translateX(0);
+  }
+  33%, 58% {
+    transform: translateX(-33.333%);
+  }
+  66%, 91% {
+    transform: translateX(-66.666%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

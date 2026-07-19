@@ -247,3 +247,31 @@ $(document).ready(function () {
 function alert_markup(alert_type, msg) {
     return '<div class="alert alert-' + alert_type + '" role="alert">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button></div>';
 }
+
+// /********************** Slideshow *********************/
+// const images = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg']; 
+// const directory = 'img/eng_pics/'; // Your local folder path
+// let currentIndex = 0;
+
+// const wrapper = document.getElementById('slides-wrapper');
+
+// // Dynamically generate the image tags
+// images.forEach((img, index) => {
+//     const imgTag = document.createElement('img');
+//     imgTag.src = `${directory}${img}`;
+//     imgTag.classList.add('slide');
+//     if (index === 0) imgTag.classList.add('active');
+//     wrapper.appendChild(imgTag);
+// });
+
+// function changeSlide(direction) {
+//     const slides = document.querySelectorAll('.slide');
+//     slides[currentIndex].classList.remove('active');
+    
+//     currentIndex = (currentIndex + direction + slides.length) % slides.length;
+    
+//     slides[currentIndex].classList.add('active');
+// }
+
+// // Optional: Auto-play every 4 seconds
+// setInterval(() => changeSlide(1), 4000);
