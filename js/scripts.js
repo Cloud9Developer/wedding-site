@@ -59,13 +59,39 @@ $(document).ready(function () {
         padding: 4
     });
 
-    $('.fancybox').fancybox({
-        padding: 4,
-        width: 1000,
-        height: 800,
-        arrows    : true,  // Displays navigation arrows at the screen edges
-        loop      : true,  // Allows endless cycling through the gallery items
-        nextClick : false  // Optional: stops a main image click from skipping forward
+    /***************** Slideshow animation timing ******************/
+    (function () {
+        var slides = $('.slideshow .slide');
+        var count = slides.length;
+        if (count < 2) return;
+        var perSlide = 4; // seconds each slide is visible
+        var total = perSlide * count;
+        slides.each(function (i) {
+            this.style.animationDuration = total + 's';
+            this.style.animationDelay    = (perSlide * i) + 's';
+        });
+    })();
+
+    var fancyboxItems = $('.slideshow .fancybox').map(function () {
+        return { href: $(this).attr('href') };
+    }).get();
+
+    $('.slideshow .fancybox').on('click', function (e) {
+        e.preventDefault();
+        // Find which slide is currently visible by checking computed opacity
+        var currentIndex = 0;
+        $('.slideshow .slide').each(function (i) {
+            if (parseFloat(window.getComputedStyle(this).opacity) > 0.5) {
+                currentIndex = i;
+            }
+        });
+        $.fancybox(fancyboxItems, {
+            padding  : 4,
+            index    : currentIndex,
+            arrows   : true,
+            loop     : true,
+            nextClick: false
+        });
     });
 
     /***************** Tooltips ******************/

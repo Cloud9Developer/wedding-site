@@ -234,13 +234,8 @@ section .header {
 }
 
 .fa-select {
-  /* Forces the select box to use Font Awesome Solid */
   /* Retaining transparency from previous step */
   background-color: transparent;
-  /* Generates a clean custom arrow using a white SVG chevron */
-  /* Positions the arrow 12px from the right edge and centers it vertically */
-  /* Resizes the SVG arrow size */
-  /* IMPORTANT: Extra right padding keeps long text from overlapping the arrow */
   padding: 8px 40px 8px 12px;
   width: 100%;
   max-width: 95%;
@@ -962,7 +957,7 @@ RSVP form
   color: #BCC1C3;
 }
 .rsvp .rsvp-form .form-input-group select:required:invalid {
-  color: rgb(189, 193, 195); /* same colour you use for input placeholders */
+  color: #BCC1C3; /* same colour you use for input placeholders */
 }
 .rsvp .rsvp-form .form-input-group option[value=""][disabled] {
   display: none; /* hide it from the dropdown list itself */
@@ -1017,39 +1012,40 @@ body.modal-open {
 /* ==========================================================================
 Slideshow
 ========================================================================== */
-/* 1. Viewport container (keeps images framed nicely) */
 /* Slideshow Container */
 .slideshow {
   width: 80%;
   min-width: 275px;
   max-width: 800px;
-  min-height: 200px;
-  max-height: 450px;
-  overflow: hidden;
+  max-height: 600px;
   border-radius: 8px;
-  position: relative;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Wrapper moving the images */
+/* All slides stacked in the same grid cell */
 .slide-wrapper {
-  display: flex;
-  width: 300%; /* 100% multiplied by number of slides */
-  height: 100%;
-  animation: slideAnimation 12s infinite;
+  display: grid;
+  justify-items: center;
 }
 
 /* Individual Slides */
 .slide {
-  width: 100%;
-  height: 100%;
+  grid-area: 1/1;
+  opacity: 0;
+  animation-name: slideFade;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /* duration and delay are set dynamically by scripts.js */
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  max-height: 500px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 /* ==========================================================================
@@ -1087,27 +1083,21 @@ Registry
   border-radius: 15px;
 }
 
-/* Animation Logic (3 Slides) */
-@keyframes slideAnimation {
+/* Animation Logic (3 Slides, opacity crossfade) */
+@keyframes slideFade {
   0% {
-    transform: translateX(0%);
+    opacity: 1;
   }
   28% {
-    transform: translateX(0%);
+    opacity: 1;
   }
   33% {
-    transform: translateX(-33.33%);
-  }
-  61% {
-    transform: translateX(-33.33%);
-  }
-  66% {
-    transform: translateX(-66.66%);
+    opacity: 0;
   }
   95% {
-    transform: translateX(-66.66%);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0%);
+    opacity: 1;
   }
 }
