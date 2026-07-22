@@ -1021,12 +1021,34 @@ Slideshow
 Registry
 ========================================================================== */
 .registries {
-  max-width: 20%;
+  justify-content: center;
+  display: flex;
+  max-width: 50%;
   margin: 0 auto;
 }
+
+.registries .registry {
+  display: inline-block;
+  text-align: center;    /* Ensures text always centers perfectly beneath the image */
+  vertical-align: top;
+}
+
 .registries img {
-  width: 50%;
+  display: inline-block;
+
+  width: 90px;
+  // padding: 10px;
   height: auto;
+}
+
+
+.text-md-right { text-align: right; }
+.text-md-left  { text-align: left; }
+
+
+.black-border {
+  border: 1px solid black;
+  border-radius: 15px
 }
 
 /* Animation Logic (3 Slides) */
