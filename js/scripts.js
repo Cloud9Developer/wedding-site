@@ -228,7 +228,7 @@ $(document).ready(function () {
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
         $.post('https://script.google.com/macros/s/AKfycbzBWuJaHhZfxeRIE-3axnI_KdYSY1dgbE-kczJ6mo2OrhEclyMUw0lSNG552cYxI6nVag/exec', data)
             .done(function (data) {
-                console.log(data);
+                // console.log(data);
                 if (data.result === "error") {
                     $('#alert-wrapper').html(alert_markup('danger', data.message));
                 } else {
@@ -237,7 +237,7 @@ $(document).ready(function () {
                 }
             })
             .fail(function (data) {
-                console.log(data);
+                // console.log(data);
                 $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
             });
     });
