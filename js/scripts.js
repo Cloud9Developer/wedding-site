@@ -66,6 +66,7 @@ $(document).ready(function () {
         controlNav     : false,
         directionNav   : false,
         animateHeight  : true,
+        touch          : false,
         start: function (slider) {
             engSlider = slider;
         }
