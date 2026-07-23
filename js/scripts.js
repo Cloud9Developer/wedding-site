@@ -55,7 +55,6 @@ $(document).ready(function () {
     });
 
     /***************** Engagement photo slider ******************/
-    var engSlider;
     var engSlideCount = $('.eng-slider .slides li').length;
     var engSlideSpeed = Math.max(4000, Math.round(12000 / engSlideCount)); // total cycle ~12s regardless of count
     $('.eng-slider').flexslider({
@@ -68,10 +67,7 @@ $(document).ready(function () {
         directionNav   : false,
         animateHeight  : true,
         touch          : false,
-        keyboard       : false,
-        start: function (slider) {
-            engSlider = slider;
-        }
+        keyboard       : false
     });
 
     // Build items from original slides only (Flexslider clones the list, so limit to engSlideCount)
