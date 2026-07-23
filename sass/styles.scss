@@ -966,10 +966,6 @@ Slideshow
 ========================================================================== */
 /* Slideshow Container */
 /* Engagement photo slider */
-.eng-slider .slides li {
-    padding: 0 -2px;
-}
-
 .eng-slider .slides li a {
     cursor: default;
 }
@@ -980,6 +976,7 @@ Slideshow
     margin-left: auto;
     margin-right: auto;
     touch-action: pan-y;
+    overflow: hidden;
 }
 
 .eng-slider .slides img {
