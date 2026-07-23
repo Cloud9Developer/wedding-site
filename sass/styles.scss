@@ -966,6 +966,10 @@ Slideshow
 ========================================================================== */
 /* Slideshow Container */
 /* Engagement photo slider */
+.eng-slider .slides li {
+    padding: 0 -2px;
+}
+
 .eng-slider .slides li a {
     cursor: default;
 }
