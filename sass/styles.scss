@@ -1008,20 +1008,33 @@ Registry
   display: flex;
   max-width: 50%;
   margin: 0 auto;
-}
 
-.registries .registry {
-  display: inline-block;
-  text-align: center;    /* Ensures text always centers perfectly beneath the image */
-  vertical-align: top;
-}
+  img {
+    display: inline-block;
+    width: 90px;
+    // padding: 10px;
+    height: auto;
+  }
 
-.registries img {
-  display: inline-block;
+  .registry {
+    display: inline-block;
+    text-align: center;    /* Ensures text always centers perfectly beneath the image */
+    vertical-align: top;
+  }
+  
+  .registry:hover {
+    transform: translateY(-4px);
+  }
 
-  width: 90px;
-  // padding: 10px;
-  height: auto;
+  // .registry a:hover {
+  img:hover {
+    // display: inline-block;
+    // color: $accent-color-hover;
+    /* Lift the icon up by 4 pixels */ 
+    /* Add a soft ambient glow */
+    box-shadow: -5px 5px 10px rgba(black, 0.2) 
+    // box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+  }
 }
 
 

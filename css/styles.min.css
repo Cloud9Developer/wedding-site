@@ -1057,17 +1057,23 @@ Registry
   max-width: 50%;
   margin: 0 auto;
 }
-
+.registries img {
+  display: inline-block;
+  width: 90px;
+  height: auto;
+}
 .registries .registry {
   display: inline-block;
   text-align: center; /* Ensures text always centers perfectly beneath the image */
   vertical-align: top;
 }
-
-.registries img {
-  display: inline-block;
-  width: 90px;
-  height: auto;
+.registries .registry:hover {
+  transform: translateY(-4px);
+}
+.registries img:hover {
+  /* Lift the icon up by 4 pixels */
+  /* Add a soft ambient glow */
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .text-md-right {
