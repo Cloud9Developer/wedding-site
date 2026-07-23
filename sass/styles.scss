@@ -966,23 +966,26 @@ Slideshow
 ========================================================================== */
 /* Slideshow Container */
 /* Engagement photo slider */
+.eng-slider .slides li {
+    background: #fff;
+}
+
 .eng-slider .slides li a {
     cursor: default;
 }
 
 .eng-slider {
     width: 80%;
-    max-width: 800px;
+    max-width: 816px;
     margin-left: auto;
     margin-right: auto;
     touch-action: pan-y;
     overflow: hidden;
-    position: relative;
-    clip-path: inset(0);
 }
 
 .eng-slider .slides img {
-    width: 100%;
+    width: calc(100% - 16px);
+    margin: 0 8px;
     height: auto;
     max-height: 600px;
     object-fit: contain;
