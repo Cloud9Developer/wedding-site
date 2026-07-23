@@ -1025,10 +1025,8 @@ Slideshow
   margin-right: auto;
   touch-action: pan-y;
   overflow: hidden;
-}
-
-.eng-slider .flex-viewport {
-  overflow: hidden !important;
+  position: relative;
+  clip-path: inset(0);
 }
 
 .eng-slider .slides img {
