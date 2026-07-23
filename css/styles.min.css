@@ -1023,6 +1023,7 @@ Slideshow
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  touch-action: pan-y;
 }
 
 .eng-slider .slides img {
@@ -1037,10 +1038,6 @@ Slideshow
 /* ==========================================================================
 Registry
 ========================================================================== */
-.flexslider {
-  touch-action: pan-y; /* Allows vertical page scroll while blocking horizontal slider swipes in some modern browsers */
-}
-
 .registries {
   justify-content: center;
   display: flex;
