@@ -63,13 +63,22 @@ $(document).ready(function () {
         slideshowSpeed : engSlideSpeed,
         animationSpeed : 600,
         pauseOnHover   : false,
+        pauseInvisible : false,
         controlNav     : false,
         directionNav   : false,
         animateHeight  : true,
         touch          : false,
         start: function (slider) {
             engSlider = slider;
+        },
+        after: function (slider) {
+            slider.play();
         }
+    });
+
+    // Resume if the browser paused the slider when the tab was backgrounded
+    document.addEventListener('visibilitychange', function () {
+        if (!document.hidden && engSlider) { engSlider.play(); }
     });
 
     // Build items from original slides only (Flexslider clones the list, so limit to engSlideCount)
