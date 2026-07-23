@@ -48,46 +48,45 @@ $(document).ready(function () {
         offset: '75%'
     });
 
-    /***************** Initiate Flexslider ******************/
-    $('.flexslider').flexslider({
-        animation: "slide"
-    });
-
     /***************** Initiate Fancybox ******************/
 
     $('.single_image').fancybox({
         padding: 4
     });
 
-    /***************** Slideshow animation timing ******************/
-    (function () {
-        var slides = $('.slideshow .slide');
-        var count = slides.length;
-        if (count < 2) return;
-        var perSlide = 4; // seconds each slide is visible
-        var total = perSlide * count;
-        slides.each(function (i) {
-            this.style.animationDuration = total + 's';
-            this.style.animationDelay    = (perSlide * i) + 's';
-        });
-    })();
+    /***************** Engagement photo slider ******************/
+    var engSlider;
+    var engSlideCount = $('.eng-slider .slides li').length;
+    var engSlideSpeed = Math.max(4000, Math.round(12000 / engSlideCount)); // total cycle ~12s regardless of count
+    $('.eng-slider').flexslider({
+        animation      : 'slide',
+        slideshowSpeed : engSlideSpeed,
+        animationSpeed : 600,
+        pauseOnHover   : false,
+        controlNav     : false,
+        directionNav   : false,
+        animateHeight  : true,
+        start: function (slider) {
+            engSlider = slider;
+        }
+    });
 
-    var fancyboxItems = $('.slideshow .fancybox').map(function () {
+    // Build items from original slides only (Flexslider clones the list, so limit to engSlideCount)
+    var engItems = $('.eng-slider .slides li a').slice(0, engSlideCount).map(function () {
         return { href: $(this).attr('href') };
     }).get();
 
-    $('.slideshow .fancybox').on('click', function (e) {
+    $('.eng-slider').on('click', '.slides li a', function (e) {
         e.preventDefault();
-        // Find which slide is currently visible by checking computed opacity
-        var currentIndex = 0;
-        $('.slideshow .slide').each(function (i) {
-            if (parseFloat(window.getComputedStyle(this).opacity) > 0.5) {
-                currentIndex = i;
-            }
+        // Find which original href was clicked and use that as the index
+        var clickedHref = $(this).attr('href');
+        var index = 0;
+        $.each(engItems, function (i, item) {
+            if (item.href === clickedHref) { index = i; return false; }
         });
-        $.fancybox(fancyboxItems, {
+        $.fancybox(engItems, {
             padding  : 4,
-            index    : currentIndex,
+            index    : index,
             arrows   : true,
             loop     : true,
             nextClick: false

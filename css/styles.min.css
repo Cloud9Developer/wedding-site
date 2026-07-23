@@ -1013,38 +1013,24 @@ body.modal-open {
 Slideshow
 ========================================================================== */
 /* Slideshow Container */
-.slideshow {
+/* Engagement photo slider */
+.eng-slider .slides li a {
+  cursor: default;
+}
+
+.eng-slider {
   width: 80%;
-  min-width: 275px;
   max-width: 800px;
-  max-height: 600px;
-  border-radius: 8px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* All slides stacked in the same grid cell */
-.slide-wrapper {
-  display: grid;
-  justify-items: center;
-}
-
-/* Individual Slides */
-.slide {
-  grid-area: 1/1;
-  opacity: 0;
-  animation-name: slideFade;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  /* duration and delay are set dynamically by scripts.js */
-}
-
-.slide img {
-  width: auto;
-  max-width: 100%;
-  max-height: 500px;
+.eng-slider .slides img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
   display: block;
-  margin: 0 auto;
   border-radius: 8px;
 }
 
@@ -1087,23 +1073,4 @@ Registry
 .black-border {
   border: 1px solid black;
   border-radius: 15px;
-}
-
-/* Animation Logic (3 Slides, opacity crossfade) */
-@keyframes slideFade {
-  0% {
-    opacity: 1;
-  }
-  28% {
-    opacity: 1;
-  }
-  33% {
-    opacity: 0;
-  }
-  95% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
