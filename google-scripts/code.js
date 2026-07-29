@@ -12,10 +12,17 @@ function doPost(e) {
     
     // if (mailData.invite_code != "06272026") { // validate invite code before saving data
     // var validBool = isValidCode(mailData.invite_code);
-    if (!isValidCode(mailData.invite_code)) {
+    // if (!isValidCode(mailData.invite_code)) {
+    if (!(String(mailData.invite_code) in INVITE_CODES_OBJ)) {
       Logger.log("Incorrect Invite Code");
       return ContentService
           .createTextOutput(JSON.stringify({"result":"error", "message": "Sorry, your invite code '" + mailData.invite_code + "' is incorrect."}))
+          .setMimeType(ContentService.MimeType.JSON);
+    }
+    if (!INVITE_CODES_OBJ[mailData.invite_code]['plus_one_allowed'] && String(mailData.plus_one_name).trim().length > 0) {
+      Logger.log("Plus One Not Allowed");
+      return ContentService
+          .createTextOutput(JSON.stringify({"result":"error", "message": "Sorry, your invite code '" + mailData.invite_code + "' does not permit a Plus One."}))
           .setMimeType(ContentService.MimeType.JSON);
     }
     
@@ -39,11 +46,10 @@ function doPost(e) {
   }
 }
 
-function isValidCode(inv_code) {
-  const inviteCodeArr = INVITE_CODES.map(item => item.code);
-  return inviteCodeArr.includes(String(inv_code).trim());
-}
-
+// function isValidCode(inv_code) {
+//   const inviteCodeArr = INVITE_CODES.map(item => item.code);
+//   return inviteCodeArr.includes(String(inv_code).trim());
+// }
 
 /**
  * This method inserts the data received from the html form submission
