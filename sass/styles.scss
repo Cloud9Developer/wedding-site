@@ -70,6 +70,9 @@ section .header {
 .section-padding {
   padding: $section-padding;
 }
+.blank-section-padding {
+  padding-top: 40px;
+}
 .section-border {
   border-bottom: 1px solid $keyline-color;
 }
