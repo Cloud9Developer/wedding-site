@@ -54,43 +54,83 @@ $(document).ready(function () {
         padding: 4
     });
 
-    /***************** Engagement photo slider ******************/
-    var engSlideCount = $('.eng-slider .slides li').length;
-    var engSlideSpeed = Math.max(4000, Math.round(12000 / engSlideCount)); // total cycle ~12s regardless of count
-    $('.eng-slider').flexslider({
-        animation      : 'slide',
-        slideshowSpeed : engSlideSpeed,
-        animationSpeed : 600,
-        pauseOnHover   : false,
-        pauseInvisible : false,
-        controlNav     : false,
-        directionNav   : false,
-        animateHeight  : true,
-        touch          : false,
-        keyboard       : false
-    });
+    /***************** Engagement photo slider (dynamic) ******************/
+    // Use an AJAX call to load the image list from img/eng_pics.json.
+    // If that fails (e.g., when running from file://) we fall back to a hard‑coded list.
+    const fallbackEngPics = [
+        // "img/eng_pics/img1.png",
+        "img/eng_pics/img2.jpg",
+        "img/eng_pics/img3.jpg",
+        "img/eng_pics/img4.jpg"
+    ];
 
-    // Build items from original slides only (Flexslider clones the list, so limit to engSlideCount)
-    var engItems = $('.eng-slider .slides li a').slice(0, engSlideCount).map(function () {
-        return { href: $(this).attr('href') };
-    }).get();
+    function buildEngSlider(data) {
+        console.log('Building engagement slider with', data.length, 'images.');
+        var $slides = $('.eng-slider .slides');
+        $slides.empty();
+        $.each(data, function (index, src) {
+            var $li = $('<li>');
+            var $a = $('<a>', {
+                class: 'fancybox',
+                rel: 'eng-group',
+                href: src
+            });
+            var $img = $('<img>', {
+                src: src,
+                alt: 'Slide ' + (index + 1)
+            });
+            $a.append($img);
+            $li.append($a);
+            $slides.append($li);
+        });
 
-    $('.eng-slider').on('click', '.slides li a', function (e) {
-        e.preventDefault();
-        // Find which original href was clicked and use that as the index
-        var clickedHref = $(this).attr('href');
-        var index = 0;
-        $.each(engItems, function (i, item) {
-            if (item.href === clickedHref) { index = i; return false; }
+        var engSlideCount = $slides.children('li').length;
+        var engSlideSpeed = Math.max(4000, Math.round(12000 / engSlideCount)); // total cycle ~12s regardless of count
+        $('.eng-slider').flexslider({
+            animation      : 'slide',
+            slideshowSpeed : engSlideSpeed,
+            animationSpeed : 600,
+            pauseOnHover   : false,
+            pauseInvisible : false,
+            controlNav     : false,
+            directionNav   : false,
+            animateHeight  : true,
+            touch          : false,
+            keyboard       : false
         });
-        $.fancybox(engItems, {
-            padding  : 4,
-            index    : index,
-            arrows   : true,
-            loop     : true,
-            nextClick: false
+
+        // Build items from original slides only (Flexslider clones the list, so limit to engSlideCount)
+        var engItems = $slides.find('li a').slice(0, engSlideCount).map(function () {
+            return { href: $(this).attr('href') };
+        }).get();
+
+        $('.eng-slider').on('click', '.slides li a', function (e) {
+            e.preventDefault();
+            // Find which original href was clicked and use that as the index
+            var clickedHref = $(this).attr('href');
+            var index = 0;
+            $.each(engItems, function (i, item) {
+                if (item.href === clickedHref) { index = i; return false; }
+            });
+            $.fancybox(engItems, {
+                padding  : 4,
+                index    : index,
+                arrows   : true,
+                loop     : true,
+                nextClick: false
+            });
         });
-    });
+    }
+
+    $.getJSON('img/eng_pics.json')
+        .done(function (data) {
+            console.log('Fetched engagement JSON, count:', data.length, 'data:', data);
+            buildEngSlider(data);
+        })
+        .fail(function () {
+            console.warn('Failed to load eng_pics.json, using fallback list.');
+            buildEngSlider(fallbackEngPics);
+        });
 
     /***************** Tooltips ******************/
     $('[data-toggle="tooltip"]').tooltip();
