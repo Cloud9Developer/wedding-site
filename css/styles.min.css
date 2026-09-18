@@ -862,7 +862,7 @@ Google map
 #map-content-wrapper {
   position: relative;
   margin-top: -502px;
-  margin-bottom: 150px;
+  margin-bottom: 0;
 }
 
 #map-content {

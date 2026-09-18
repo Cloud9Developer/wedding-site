@@ -28,6 +28,10 @@
         padding-top: 50%;
     }
 
+    #registry {
+        margin-top: 5% !important;
+    }
+
     .header-nav {
         position: fixed;
         background-color: #000;
@@ -230,9 +234,12 @@
         border-radius: 0;
     }
 
-    #map-content-wrapper {
-        margin-bottom: 40px;
-    }
+#map-content-wrapper {
+    /* Ensure a stable 40px gap by setting bottom margin to 0. The
+       `.blank-section-padding` element provides the 40 px padding-top between
+       sections. */
+    margin-bottom: 0;
+}
     
     #map-content {
         margin-top: 0;
@@ -265,9 +272,9 @@
         top: 10px;
         right: 10px; }
 
-    #map-content-wrapper {
-        margin-bottom: 0;
-    }
+#map-content-wrapper {
+    margin-bottom: 0;
+}
     
     footer ul.footer-group {
         border-top: none;

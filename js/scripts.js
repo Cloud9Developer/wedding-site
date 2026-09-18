@@ -58,7 +58,7 @@ $(document).ready(function () {
     // Use an AJAX call to load the image list from img/eng_pics.json.
     // If that fails (e.g., when running from file://) we fall back to a hard‑coded list.
     const fallbackEngPics = [
-        // "img/eng_pics/img1.png",
+        "img/eng_pics/img1.png",
         "img/eng_pics/img2.jpg",
         "img/eng_pics/img3.jpg",
         "img/eng_pics/img4.jpg"
