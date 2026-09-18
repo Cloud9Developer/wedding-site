@@ -809,10 +809,15 @@ Google map
   height: 500px;
   width: 100%;
 }
+// The wrapper around the map overlay content originally had a large bottom
+// margin (150 px) that created a variable gap between the map section and
+// the following registry section.  For a consistent 40 px vertical space we
+// replace this with no bottom margin.  The padding-top on the `.blank-section-
+// padding` element provides the exact 40 px gap.
 #map-content-wrapper {
   position: relative;
   margin-top: -502px;
-  margin-bottom: 150px;
+  margin-bottom: 0;
 }
 #map-content {
   margin-top: 40px;
