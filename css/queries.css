@@ -28,9 +28,12 @@
         padding-top: 50%;
     }
 
-    #registry {
-        margin-top: 5% !important;
-    }
+/* Adjust registry spacing for mobile viewports. The default 5% margin was too small
+   and conflicted with the 80px margin set in `sass/styles.scss`. Overriding
+   the rule ensures consistent spacing across browsers. */
+#registry {
+    margin-top: 80px !important;
+}
 
     .header-nav {
         position: fixed;

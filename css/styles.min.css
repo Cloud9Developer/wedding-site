@@ -180,6 +180,17 @@ section .header {
   padding-top: 40px;
 }
 
+/* -------------------------------------------------------------------------
+ * Mobile spacing adjustments
+ * ------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Add a top margin to the registry section to separate it from the map
+     that otherwise pulls up due to a negative margin on the embedded iframe.
+     The value matches the default padding-top used for section spacing. */
+  #registry {
+    margin-top: 80px;
+  }
+}
 .section-border {
   border-bottom: 1px solid #E6E9EA;
 }
