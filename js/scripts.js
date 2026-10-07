@@ -58,10 +58,7 @@ $(document).ready(function () {
     // Use an AJAX call to load the image list from img/eng_pics.json.
     // If that fails (e.g., when running from file://) we fall back to a hard‑coded list.
     const fallbackEngPics = [
-        "img/eng_pics/img1.png",
-        "img/eng_pics/img2.jpg",
-        "img/eng_pics/img3.jpg",
-        "img/eng_pics/img4.jpg"
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.vectorstock.com%2Fi%2F1000x1000%2F74%2F02%2Fbroken-code-vector-45997402.jpg&f=1&nofb=1&ipt=3fc1ae0fe34fb745d45b30d845c79170d5b4c8fc7e84adcca2d9c510b2d68fca&ipo=images"
     ];
 
     function buildEngSlider(data) {
