@@ -45,6 +45,13 @@ gulp.task('minify-js', function () {
         .pipe(gulp.dest('./js'));
 });
 
+// minify countdown.js
+gulp.task('minify-countdown', function () {
+    return gulp.src('./js/countdown.js')
+        .pipe(terser())
+        .pipe(rename({basename: 'countdown.min'}))
+        .pipe(gulp.dest('./js'));
+});
 // After the build is complete, start a simple HTTP server on port 8000.
 // This is convenient for local development/testing but should be removed
 // from CI pipelines or production builds.
@@ -71,4 +78,4 @@ gulp.task('serve', function () {
 // default task – first generate the image list, then build assets and start the
 // HTTP server.  The server task keeps the Gulp process alive until the server
 // exits (e.g., by pressing Ctrl+C).
-gulp.task('default', gulp.series('generate-pics', 'sass', 'minify-js', 'serve'));
+gulp.task('default', gulp.series('generate-pics', 'sass', 'minify-js', 'minify-countdown', 'serve'));
