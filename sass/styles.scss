@@ -67,8 +67,178 @@ ul li {
 section .header {
   padding-bottom: 30px;
 }
+/* Center the header for the Events section */
+.events .header {
+  text-align: center;
+}
 .section-padding {
   padding: $section-padding;
+}
+/* Reduce padding specifically for the invitation section so that the
+   gap between the invitation and intro sections is tighter.
+   We keep the top padding but lower the bottom padding.
+   The rule is placed after the generic .section-padding definition so
+   that it takes precedence.
+*/
+/*
+ * Adjust the invitation section to reduce the bottom padding while
+ * preserving the top padding that creates visual balance.
+ * The original rule set `padding: 30px 0;` which applies 30px to both the
+ * top and bottom, leaving the gap between the invitation and the
+ * following intro section the same as the other sections.
+ *
+ * Here we specify a lower bottom padding (10px) to tighten the
+ * vertical spacing without affecting the overall layout.
+ */
+#invitation.section-padding {
+  padding: 30px 0 10px 0; /* top 30px, right 0, bottom 10px, left 0 */
+}
+
+/* Reduce vertical spacing between the Registry and RSVP sections
+ * The default `.section-padding` rule applies 40px of padding to both the
+ * top and bottom of each section.  To tighten the gap between the
+ * `#registry` section (bottom padding) and the `#rsvp` section (top
+ * padding), we override those values.
+ */
+/* Reduce vertical spacing between the Registry and RSVP sections.
+ * Bottom padding of the Registry section is now 15px.
+ */
+#registry.section-padding {
+  padding: 40px 0 15px 0; /* bottom padding 15px */
+}
+
+/* Override the inline `padding-top: 40px;` style on the RSVP container.
+ * Adding `!important` ensures this rule wins over the inline value and
+ * keeps the cascade predictable.
+ */
+/* Reduce top padding of the RSVP container to 15px. */
+#rsvp .container {
+  padding-top: 15px !important;
+}
+/* Countdown timer styling */
+/* ==============================
+   Countdown styling (from user snippet)
+   ==============================
+*/
+/* Import Google Font for countdown numbers */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+/* Main container */
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 12px;
+  margin: 28px auto 32px;
+  max-width: 520px;
+}
+
+/* Individual countdown boxes */
+.countdown-item {
+  position: relative;
+  min-width: 95px;
+  padding: 16px 14px 13px;
+
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+
+  text-align: center;
+
+  box-shadow:
+    0 2px 8px rgba(50, 55, 65, 0.04),
+    0 1px 2px rgba(50, 55, 65, 0.03);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Subtle interaction */
+.countdown-item:hover {
+  transform: translateY(-2px);
+
+  border-color: #e4c96d;
+
+  box-shadow:
+    0 6px 18px rgba(50, 55, 65, 0.08);
+}
+
+/* Large number */
+.countdown-number {
+  display: block;
+
+  color: #454b5a;
+
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  font-weight: 700; /* bolden the number display */
+  line-height: 1.15;
+  letter-spacing: 1px;
+}
+
+/* DAYS / HOURS / etc. */
+.countdown-label {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #b2b5bb;
+
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+/* Small gold accent underneath each number */
+.countdown-item::after {
+  content: "";
+
+  display: block;
+
+  width: 22px;
+  height: 1px;
+
+  margin: 9px auto 0;
+
+  background: #e8c96b;
+
+  opacity: 0.9;
+}
+
+/* ==============================
+   Mobile
+   ==============================
+*/
+@media (max-width: 600px) {
+
+  .countdown {
+    gap: 7px;
+    margin-top: 22px;
+    margin-bottom: 26px;
+  }
+
+  .countdown-item {
+    min-width: 0;
+    flex: 1;
+    padding: 13px 6px 11px;
+  }
+
+  .countdown-number {
+    font-size: 21px;
+  }
+
+  .countdown-label {
+    margin-top: 6px;
+    font-size: 7px;
+    letter-spacing: 1.4px;
+  }
+
+  .countdown-item::after {
+    width: 16px;
+    margin-top: 7px;
+  }
 }
 .blank-section-padding {
   padding-top: 40px;
@@ -468,7 +638,8 @@ Intro
 }
 
 #intro {
-  padding-top: 40px;
+  /* Reduce top padding to lower the gap between invitation and intro */
+  padding-top: 30px;
   img {
     width: 100%;
     height: auto;
