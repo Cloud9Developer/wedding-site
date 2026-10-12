@@ -1210,13 +1210,15 @@ Slideshow
 .thumb-bar {
   text-align: center;
   padding: 10px 10px; /* add horizontal padding to keep first/last images visible */
-  background-color: rgba(255, 255, 255, 0.9);
-  /* Position the thumbnail bar over the FancyBox content */
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 8041; /* Above FancyBox elements */
+  /* Transparent background for thumbnail flexbox */
+  background-color: transparent;
+  /* Place the thumbnail bar below the main image, flowing with content */
+  /* position: absolute;  removed */
+  /* bottom: 0; */
+  /* left: 0; */
+  /* right: 0; */
+  /* z-index: 8041; */
+  margin-top: 10px; /* Space between image and thumbnails */
 }
 
 /* Thumbnail images – keep a single horizontal row */
