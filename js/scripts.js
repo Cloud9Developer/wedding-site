@@ -48,12 +48,6 @@ $(document).ready(function () {
         offset: '75%'
     });
 
-    /***************** Initiate Fancybox ******************/
-
-    $('.single_image').fancybox({
-        padding: 4
-    });
-
     /***************** Engagement photo slider (dynamic) ******************/
     // Use an AJAX call to load the image list from img/eng_pics.json.
     // If that fails (e.g., when running from file://) we fall back to a hard‑coded list.
@@ -100,6 +94,8 @@ $(document).ready(function () {
         var engItems = $slides.find('li a').slice(0, engSlideCount).map(function () {
             return { href: $(this).attr('href') };
         }).get();
+        // Expose the item list globally so the thumbnail bar can reference it
+        window.engItems = engItems;
 
         $('.eng-slider').on('click', '.slides li a', function (e) {
             e.preventDefault();
@@ -128,6 +124,43 @@ $(document).ready(function () {
             console.warn('Failed to load eng_pics.json, using fallback list.');
             buildEngSlider(fallbackEngPics);
         });
+
+    /*
+     * Thumbnail navigation bar for the FancyBox image viewer.
+     * The bar is injected into the FancyBox wrapper on the first
+     * afterShow event. It contains a thumbnail for each image in the
+     * current engagement slider group. Clicking a thumbnail will
+     * open the corresponding slide in the FancyBox instance.
+     */
+    $(document).on('afterShow.fb', function (e, instance) {
+        // Ensure the thumbnail bar is only created once per lightbox session
+        if ($('.thumb-bar').length === 0 && window.engItems) {
+            var $bar = $('<div class="thumb-bar"></div>');
+            $.each(window.engItems, function (idx, item) {
+                var $thumb = $('<img>', {
+                    src: item.href,
+                    class: 'thumb',
+                    'data-index': idx
+                });
+                $thumb.on('click', function () {
+                    $.fancybox(window.engItems, { index: idx });
+                });
+                $bar.append($thumb);
+            });
+            // Insert the bar after the FancyBox skin container
+            $('.fancybox-wrap').append($bar);
+        }
+        // Highlight the active thumbnail
+        if (instance && instance.current) {
+            var activeIdx = instance.current.index;
+            $('.thumb-bar img').removeClass('active').eq(activeIdx).addClass('active');
+        }
+    });
+
+    // Clean up the thumbnail bar when the lightbox is closed
+    $(document).on('afterClose.fb', function () {
+        $('.thumb-bar').remove();
+    });
 
     /***************** Tooltips ******************/
     $('[data-toggle="tooltip"]').tooltip();

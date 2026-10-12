@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,400italic,300italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
@@ -1199,6 +1200,64 @@ Slideshow
   max-height: 600px;
   object-fit: contain;
   display: block;
+}
+
+/*
+ * Thumbnail navigation bar for FancyBox images. The bar is positioned
+ * just below the FancyBox content area. It is injected dynamically
+ * by the JavaScript code above.
+ */
+.thumb-bar {
+  text-align: center;
+  padding: 10px 10px; /* add horizontal padding to keep first/last images visible */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Position the thumbnail bar over the FancyBox content */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 8041; /* Above FancyBox elements */
+}
+
+/* Thumbnail images – keep a single horizontal row */
+.thumb-bar {
+  /* Use flex to keep all thumbnails in one line */
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* If thumbnails overflow, allow horizontal scrolling */
+  overflow-x: auto;
+  /* Enable momentum scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Snap scrolling for smooth page snapping */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* Ensure the bar spans the full width of its parent */
+  width: 100%;
+  /* Prevent unwanted wrapping */
+  white-space: nowrap;
+}
+
+.thumb-bar img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  object-fit: cover;
+  /* Ensure thumbnails don't shrink or grow */
+  flex: 0 0 auto;
+  margin: 0 5px;
+  /* Snap alignment for child items */
+  scroll-snap-align: start;
+  /* Prevent the first image from being cut off by the scroll edge */
+}
+.thumb-bar img .thumb-bar img:first-child {
+  margin-left: 0;
+}
+
+.thumb-bar img.active {
+  border-color: #e8ca6f;
 }
 
 /* ==========================================================================
