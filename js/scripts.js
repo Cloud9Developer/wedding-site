@@ -235,7 +235,21 @@ $(document).ready(function () {
     }
 
     /********************** Embed youtube video *********************/
-    $('.player').YTPlayer();
+    // $('.player').YTPlayer();
+    $('.player').YTPlayer({
+        // Override options directly via jQuery initialization
+        videoURL: 'https://youtu.be/8rNWGh-Hofs',
+        containment: '#video-bg',
+        autoPlay: true,
+        mute: true,
+        showControls: false,
+        controls: 0,
+        showYTLogo: false,
+        startAt: 4,
+        // startAt: 375,
+        stopAt: 380,
+        opacity: 1
+    });
 
 
     /********************** Toggle Map Content **********************/
