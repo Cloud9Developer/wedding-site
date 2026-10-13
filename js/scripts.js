@@ -97,77 +97,40 @@ $(document).ready(function () {
         // Expose the item list globally so the thumbnail bar can reference it
         window.engItems = engItems;
 
-                $('.eng-slider').on('click', '.slides li a', function (e) {
+        $('.eng-slider').on('click', '.slides li a', function (e) {
             e.preventDefault();
-            // Find which original href was clicked and use that as the index
+            
+            // 1. Pause your Flexslider loop
+            $('.eng-slider').flexslider('pause');
+
+            // 2. Find which original index was clicked
             var clickedHref = $(this).attr('href');
-            var index = 0;
-            $.each(engItems, function (i, item) {
-                if (item.href === clickedHref) { index = i; return false; }
+            var targetIndex = 0;
+            $.each(window.engItems, function (i, item) {
+                if (item.href === clickedHref) { targetIndex = i; return false; }
             });
 
-            // Native configuration block for Fancybox 2.1.5
-            $.fancybox(engItems, {
-                index: index, 
-                type: 'image',
-                padding: 4,
-                arrows: true,
-                loop: true,
-                nextClick: false,
+            // 3. Map your array to the layout structure v5 expects ({ src: "url", thumb: "url" })
+            var fancyboxItems = window.engItems.map(function(item) {
+                return { src: item.href, thumb: item.href };
+            });
+
+            // 4. Open it using the modern global API constructor
+            Fancybox.show(fancyboxItems, {
+                startIndex: targetIndex, // Tells v5 exactly which image index to open on
                 
-                // 1. Build and inject the thumbnail bar right before the lightbox renders
-                beforeShow: function() {
-                    // Pause Flexslider loop while lightboxed
-                    $('.eng-slider').flexslider('pause');
-
-                    // Build the thumbnail bar if it doesn't exist yet
-                    if ($('.thumb-bar').length === 0 && window.engItems) {
-                        var $bar = $('<div class="thumb-bar"></div>');
-                        
-                        $.each(window.engItems, function (idx, item) {
-                            var $thumb = $('<img>', {
-                                src: item.href,
-                                class: 'thumb'
-                            });
-                            
-                            // FIXED: Use $.fancybox.jumpto() so we switch slides inside the SAME instance
-                            $thumb.on('click', function () {
-                                $.fancybox.jumpto(idx);
-                            });
-                            
-                            $bar.append($thumb);
-                        });
-                        
-                        // Append directly to the Fancybox wrapper structure
-                        $('.fancybox-wrap').append($bar);
-                    }
+                // Automatically sets up the native horizontal thumbnail bar
+                Thumbs: {
+                    type: "classic", 
+                    autoStart: true  
                 },
 
-                // 2. Track the highlight dynamically whenever a slide changes
-                afterShow: function() {
-                    // In v2.1.5, "this.index" gives us the current visible item index
-                    var currentIndex = this.index;
-                    
-                    // Clear all and highlight the exact active thumbnail matching the slider state
-                    $('.thumb-bar img').removeClass('active'); 
-                    $('.thumb-bar img').eq(currentIndex).addClass('active');
-
-                    // OPTIONAL ADVANCED: Smoothly auto-scroll the thumbnail bar 
-                    // if thumbnails start overflowing horizontally
-                    var $activeThumb = $('.thumb-bar img').eq(currentIndex);
-                    if ($activeThumb.length) {
-                        var $bar = $('.thumb-bar');
-                        var scrollPos = $activeThumb.position().left + $bar.scrollLeft() - ($bar.width() / 2) + ($activeThumb.width() / 2);
-                        $bar.animate({ scrollLeft: scrollPos }, 200);
+                // Event listener lifecycle loop in v5
+                on: {
+                    destroy: function() {
+                        // Resume Flexslider loop automatically when closed
+                        $('.eng-slider').flexslider('play');
                     }
-                },
-
-                // 3. Clean up memory and states upon exiting the lightbox view
-                afterClose: function() {
-                    // Resume Flexslider loop when closed
-                    $('.eng-slider').flexslider('play');
-                    // Remove elements injected dynamically to keep DOM clean
-                    $('.thumb-bar').remove();
                 }
             });
         });
