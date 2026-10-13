@@ -97,7 +97,7 @@ $(document).ready(function () {
         // Expose the item list globally so the thumbnail bar can reference it
         window.engItems = engItems;
 
-        $('.eng-slider').on('click', '.slides li a', function (e) {
+                $('.eng-slider').on('click', '.slides li a', function (e) {
             e.preventDefault();
             // Find which original href was clicked and use that as the index
             var clickedHref = $(this).attr('href');
@@ -105,16 +105,75 @@ $(document).ready(function () {
             $.each(engItems, function (i, item) {
                 if (item.href === clickedHref) { index = i; return false; }
             });
+
+            // Native configuration block for Fancybox 2.1.5
             $.fancybox(engItems, {
-                padding  : 4,
-                index    : index,
-                arrows   : true,
-                loop     : true,
-                nextClick: false
+                index: index, 
+                type: 'image',
+                padding: 4,
+                arrows: true,
+                loop: true,
+                nextClick: false,
+                
+                // 1. Build and inject the thumbnail bar right before the lightbox renders
+                beforeShow: function() {
+                    // Pause Flexslider loop while lightboxed
+                    $('.eng-slider').flexslider('pause');
+
+                    // Build the thumbnail bar if it doesn't exist yet
+                    if ($('.thumb-bar').length === 0 && window.engItems) {
+                        var $bar = $('<div class="thumb-bar"></div>');
+                        
+                        $.each(window.engItems, function (idx, item) {
+                            var $thumb = $('<img>', {
+                                src: item.href,
+                                class: 'thumb'
+                            });
+                            
+                            // FIXED: Use $.fancybox.jumpto() so we switch slides inside the SAME instance
+                            $thumb.on('click', function () {
+                                $.fancybox.jumpto(idx);
+                            });
+                            
+                            $bar.append($thumb);
+                        });
+                        
+                        // Append directly to the Fancybox wrapper structure
+                        $('.fancybox-wrap').append($bar);
+                    }
+                },
+
+                // 2. Track the highlight dynamically whenever a slide changes
+                afterShow: function() {
+                    // In v2.1.5, "this.index" gives us the current visible item index
+                    var currentIndex = this.index;
+                    
+                    // Clear all and highlight the exact active thumbnail matching the slider state
+                    $('.thumb-bar img').removeClass('active'); 
+                    $('.thumb-bar img').eq(currentIndex).addClass('active');
+
+                    // OPTIONAL ADVANCED: Smoothly auto-scroll the thumbnail bar 
+                    // if thumbnails start overflowing horizontally
+                    var $activeThumb = $('.thumb-bar img').eq(currentIndex);
+                    if ($activeThumb.length) {
+                        var $bar = $('.thumb-bar');
+                        var scrollPos = $activeThumb.position().left + $bar.scrollLeft() - ($bar.width() / 2) + ($activeThumb.width() / 2);
+                        $bar.animate({ scrollLeft: scrollPos }, 200);
+                    }
+                },
+
+                // 3. Clean up memory and states upon exiting the lightbox view
+                afterClose: function() {
+                    // Resume Flexslider loop when closed
+                    $('.eng-slider').flexslider('play');
+                    // Remove elements injected dynamically to keep DOM clean
+                    $('.thumb-bar').remove();
+                }
             });
         });
     }
 
+    // JSON fetching mechanism stays exactly the same
     $.getJSON('img/eng_pics.json')
         .done(function (data) {
             console.log('Fetched engagement JSON, count:', data.length, 'data:', data);
@@ -125,42 +184,6 @@ $(document).ready(function () {
             buildEngSlider(fallbackEngPics);
         });
 
-    /*
-     * Thumbnail navigation bar for the FancyBox image viewer.
-     * The bar is injected into the FancyBox wrapper on the first
-     * afterShow event. It contains a thumbnail for each image in the
-     * current engagement slider group. Clicking a thumbnail will
-     * open the corresponding slide in the FancyBox instance.
-     */
-    $(document).on('afterShow.fb', function (e, instance) {
-        // Ensure the thumbnail bar is only created once per lightbox session
-        if ($('.thumb-bar').length === 0 && window.engItems) {
-            var $bar = $('<div class="thumb-bar"></div>');
-            $.each(window.engItems, function (idx, item) {
-                var $thumb = $('<img>', {
-                    src: item.href,
-                    class: 'thumb',
-                    'data-index': idx
-                });
-                $thumb.on('click', function () {
-                    $.fancybox(window.engItems, { index: idx });
-                });
-                $bar.append($thumb);
-            });
-            // Insert the bar after the FancyBox skin container
-            $('.fancybox-wrap').append($bar);
-        }
-        // Highlight the active thumbnail
-        if (instance && instance.current) {
-            var activeIdx = instance.current.index;
-            $('.thumb-bar img').removeClass('active').eq(activeIdx).addClass('active');
-        }
-    });
-
-    // Clean up the thumbnail bar when the lightbox is closed
-    $(document).on('afterClose.fb', function () {
-        $('.thumb-bar').remove();
-    });
 
     /***************** Tooltips ******************/
     $('[data-toggle="tooltip"]').tooltip();

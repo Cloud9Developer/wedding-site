@@ -1184,66 +1184,51 @@ Slideshow
     // border-radius: 8px;
 }
 
-/*
- * Thumbnail navigation bar for FancyBox images. The bar is positioned
- * just below the FancyBox content area. It is injected dynamically
- * by the JavaScript code above.
- */
+/* --- Keep your existing .thumb-bar rules exactly as they are --- */
 .thumb-bar {
-    text-align: center;
-    padding: 10px 10px; /* add horizontal padding to keep first/last images visible */
-    // background-color: rgba(255, 255, 255, 0.9);
-    /* Transparent background for thumbnail flexbox */
-    background-color: transparent;
-    /* Place the thumbnail bar below the main image, flowing with content */
-    /* position: absolute;  removed */
-    /* bottom: 0; */
-    /* left: 0; */
-    /* right: 0; */
-    /* z-index: 8041; */
-    margin-top: 10px; /* Space between image and thumbnails */
-    
-}
-/* Thumbnail images – keep a single horizontal row */
-.thumb-bar {
-  /* Use flex to keep all thumbnails in one line */
+  text-align: center;
+  padding: 10px 10px;
+  background-color: transparent;
+  margin-top: 10px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  /* If thumbnails overflow, allow horizontal scrolling */
   overflow-x: auto;
-  /* Enable momentum scrolling on iOS */
   -webkit-overflow-scrolling: touch;
-  /* Snap scrolling for smooth page snapping */
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  /* Ensure the bar spans the full width of its parent */
   width: 100%;
-  /* Prevent unwanted wrapping */
   white-space: nowrap;
 }
 
+/* Base style for all thumbnail images */
 .thumb-bar img {
   width: 60px;
   height: 60px;
   cursor: pointer;
   border: 2px solid transparent;
   object-fit: cover;
-  /* Ensure thumbnails don't shrink or grow */
   flex: 0 0 auto;
   margin: 0 5px;
-  /* Snap alignment for child items */
   scroll-snap-align: start;
-  /* Prevent the first image from being cut off by the scroll edge */
+  
+  /* FIXED: Extracted the nested rule so it is valid standard CSS */
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+/* Prevent the first image from being cut off */
 .thumb-bar img:first-child {
   margin-left: 0;
 }
+
+/* FIXED: Target the active class directly on the img tag */
+.thumb-bar img.active {
+  opacity: 1;
+  border-color: #007bff; /* Replace with your SCSS $accent-color if using a preprocessor */
 }
 
-.thumb-bar img.active {
-    border-color: $accent-color;
-}
 
 /* ==========================================================================
 Registry
