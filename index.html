@@ -53,19 +53,19 @@
                 if (js === 'waypoints.js') {
                     document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
                 } else if (js === 'jquery.js') {
-                    // document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
                     document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"><\/script>');
+                } else if (js === 'fancybox.js') {
+                    document.write('<script src="js/fancybox.umd.js"><\/script>');
                 }
+
             }
         </script>
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- <link rel="stylesheet" href="css/jquery.fancybox.css"> -->
-         <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
-        />
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" onerror="this.onerror=null;this.href='css/fancybox.css';" />
+
         <link rel="stylesheet" href="css/flexslider.css">
         <link rel="stylesheet" href="css/styles.min.css">
         <link rel="stylesheet" href="css/queries.css">
@@ -453,8 +453,12 @@
         <!-- <script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script> -->
         <script src="js/vendor/jquery-3.7.1.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
         <script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
-        <!-- <script src="js/jquery.fancybox.pack.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script> -->
+
+        <!-- 1. Try Loading via jsDelivr CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" onerror="loadJsFromCDN('fancybox.js')"></script>
+
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/jquery.flexslider-min.js"></script>
         <script src="js/jquery.mb.YTPlayer-3.4.6.min.js"></script>
