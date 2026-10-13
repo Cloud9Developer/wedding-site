@@ -122,7 +122,7 @@ $(document).ready(function () {
                 // Automatically sets up the native horizontal thumbnail bar
                 Thumbs: {
                     type: "classic", 
-                    autoStart: true  
+                    autoStart: true
                 },
 
                 // Event listener lifecycle loop in v5

@@ -1022,75 +1022,6 @@ Instagram
 }
 
 /* ==========================================================================
-Engagement Pics
-========================================================================== */
-// #eng-pics {
-//   img {
-//     width: 100%;
-//     height: auto;
-//     -moz-transition: all 300ms ease-in-out;
-//     -o-transition: all 300ms ease-in-out;
-//     -webkit-transition: all 300ms ease-in-out;
-//     transition: all 300ms ease-in-out;
-//   }
-//   .img-wrap {
-//     position: relative;
-//     overflow: hidden;
-//     border-radius: 4px;
-//   }
-//   .img-wrap .overlay {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(255, 255, 255, 0.5);
-//     -moz-transition: all 300ms ease-in-out;
-//     -o-transition: all 300ms ease-in-out;
-//     -webkit-transition: all 300ms ease-in-out;
-//     transition: all 300ms ease-in-out;
-//     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-//     filter: alpha(opacity=0);
-//     opacity: 0; }
-//   .img-wrap i {
-//     color: #fff;
-//     font-size: 15px;
-//     position: absolute;
-//     width: 15px;
-//     height: 15px;
-//     top: 6px;
-//     right: 6px; }
-//   .img-wrap:hover img, .img-wrap:focus img {
-//     -moz-transform: scale(1.1);
-//     -ms-transform: scale(1.1);
-//     -o-transform: scale(1.1);
-//     -webkit-transform: scale(1.1);
-//     transform: scale(1.1); }
-//   .img-wrap:hover .overlay, .img-wrap:focus .overlay {
-//     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
-//     filter: alpha(opacity=1);
-//     opacity: 1;
-//     z-index: 9; }
-//   .diamond {
-//     width: 230px;
-//     height: 230px;
-//     position: absolute;
-//     bottom: -145px;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     z-index: 500;
-//   }
-//   .ring {
-//     width: 75px;
-//     height: 75px;
-//     border-radius: 75px;
-//     border: 10px solid #d0d3d4;
-//     position: absolute;
-//     left: 34%;
-//     top: 75%;
-//     z-index: -1;
-//   }
-// }
-
-/* ==========================================================================
 Embed video
 ========================================================================== */
 #video-bg {
@@ -1312,52 +1243,6 @@ Slideshow
     display: block;
     // border-radius: 8px;
 }
-
-/* --- Keep your existing .thumb-bar rules exactly as they are --- */
-.thumb-bar {
-  text-align: center;
-  padding: 10px 10px;
-  background-color: transparent;
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  width: 100%;
-  white-space: nowrap;
-}
-
-/* Base style for all thumbnail images */
-.thumb-bar img {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  object-fit: cover;
-  flex: 0 0 auto;
-  margin: 0 5px;
-  scroll-snap-align: start;
-  
-  /* FIXED: Extracted the nested rule so it is valid standard CSS */
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-
-/* Prevent the first image from being cut off */
-.thumb-bar img:first-child {
-  margin-left: 0;
-}
-
-/* FIXED: Target the active class directly on the img tag */
-.thumb-bar img.active {
-  opacity: 1;
-  border-color: #007bff; /* Replace with your SCSS $accent-color if using a preprocessor */
-}
-
 
 /* ==========================================================================
 Registry
