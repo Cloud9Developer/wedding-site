@@ -293,17 +293,17 @@ $(document).ready(function () {
             title: "Christopher and Mary's Wedding",
 
             // Event start date
-            start: new Date('Nov 27, 2027 10:00'),
+            start: new Date('Dec 4, 2027 19:00'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
 
             // You can also choose to set an end time
             // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 27, 2027 22:00'),
+            end: new Date('Dec 4, 2027 22:30'),
 
             // Event Address
-            address: '1700 Lee Dr, Baton Rouge, LA 70808, USA',
+            address: '12323 Old Hammond Hwy, Baton Rouge, LA 70816, USA',
 
             // Event Description
             description: "We can't wait to see you on our big day!"
