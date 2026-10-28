@@ -60,7 +60,11 @@ gulp.task('serve', function () {
     // eslint-disable-next-line no-console
     console.log('Starting HTTP server on http://localhost:8000');
     return new Promise((resolve, reject) => {
-        const server = exec('python -m http.server 8000', (err, stdout, stderr) => {
+        // Use Python 3's built-in HTTP server. On many macOS installations, `python`
+        // points to Python 2 which does not provide the `http.server` module.
+        // Switching to `python3` ensures the command works regardless of the
+        // default python interpreter.
+        const server = exec('python3 -m http.server 8000', (err, stdout, stderr) => {
             if (err) {
                 console.error('Server exited with error:', stderr);
                 reject(err);
