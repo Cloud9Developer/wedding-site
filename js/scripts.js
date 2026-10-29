@@ -37,16 +37,24 @@ $(document).ready(function () {
     }, {
         offset: '75%'
     });
-    $('.wp8').waypoint(function () {
-        $('.wp8').addClass('animate__animated animate__fadeInLeft');
+    $('.wp10').waypoint(function () {
+        $('.wp10').addClass('animate__animated animate__fadeInRight');
     }, {
         offset: '75%'
     });
-    $('.wp9').waypoint(function () {
-        $('.wp9').addClass('animate__animated animate__fadeInRight');
+    
+    // Animate on scroll for Full Body solo images 
+    $('.wpmary').waypoint(function () {
+        $('.wpmary').addClass('animate__animated animate__fadeInLeft');
     }, {
         offset: '75%'
     });
+    $('.wpchris').waypoint(function () {
+        $('.wpchris').addClass('animate__animated animate__fadeInRight');
+    }, {
+        offset: '75%'
+    });
+    // 
 
     /***************** Engagement photo slider (dynamic) ******************/
     // Use an AJAX call to load the image list from img/eng_pics.json.
@@ -265,7 +273,6 @@ $(document).ready(function () {
         controls: 0,
         showYTLogo: false,
         startAt: 4,
-        // startAt: 375,
         stopAt: 380,
         opacity: 1
     });
