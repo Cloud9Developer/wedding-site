@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     /***************** Waypoints ******************/
-
+    // Left/Right transitions
     $('.wp1').waypoint(function () {
         $('.wp1').addClass('animate__animated animate__fadeInLeft');
     }, {
@@ -33,12 +33,34 @@ $(document).ready(function () {
         offset: '75%'
     });
     $('.wp7').waypoint(function () {
-        $('.wp7').addClass('animate__animated animate__fadeInUp');
+        $('.wp7').addClass('animate__animated animate__fadeInLeft');
+    }, {
+        offset: '75%'
+    });
+    $('.wp8').waypoint(function () {
+        $('.wp8').addClass('animate__animated animate__fadeInRight');
+    }, {
+        offset: '75%'
+    });
+    $('.wp9').waypoint(function () {
+        $('.wp9').addClass('animate__animated animate__fadeInLeft');
     }, {
         offset: '75%'
     });
     $('.wp10').waypoint(function () {
         $('.wp10').addClass('animate__animated animate__fadeInRight');
+    }, {
+        offset: '75%'
+    });
+
+    // Up transitions
+    $('.wpup1').waypoint(function () {
+        $('.wpup1').addClass('animate__animated animate__fadeInUp');
+    }, {
+        offset: '75%'
+    });
+    $('.wpup2').waypoint(function () {
+        $('.wpup2').addClass('animate__animated animate__fadeInUp');
     }, {
         offset: '75%'
     });
@@ -54,7 +76,6 @@ $(document).ready(function () {
     }, {
         offset: '75%'
     });
-    // 
 
     /***************** Engagement photo slider (dynamic) ******************/
     // Use an AJAX call to load the image list from img/eng_pics.json.

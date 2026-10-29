@@ -472,7 +472,7 @@ Animations
 /* ==========================================================================
 Waypoinsts
 ========================================================================== */
-.wp1, .wp2, .wp3, .wp4, .wp5, .wp6, .wp7, .wp8, .wpmary, .wpchris {
+.wp1, .wp2, .wp3, .wp4, .wp5, .wp6, .wp7, .wp8, .wp9, .wp10, .wpmary, .wpchris, .wpup1, .wpup2 {
   visibility: hidden;
 }
 
